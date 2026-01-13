@@ -7,6 +7,7 @@ body {position: relative; scroll-behaviour: smooth; font-family: ZCOOL QingKe Hu
 
 .Border {font-size: 12px; position: relative; min-height: 100%; box-sizing: border-box; padding-bottom: 80px; text-align: center; background-color: BLACK; padding: 0px; margin: 8px; border-style: double; border-radius: 10px; border-color: #ccc; border-width: 2px; animation-name: bodyborder; animation-iteration-count: infinite; animation-duration: 5s; animation-direction: right;}
 
+/* FIX LỖI MÀN HÌNH ĐEN */
 .BlurWebs {
     opacity: 1;
     filter: blur(0px);
@@ -31,47 +32,53 @@ body {position: relative; scroll-behaviour: smooth; font-family: ZCOOL QingKe Hu
 .Discord {background: linear-gradient(139deg, rgba(88, 101, 242, 1) 41%, rgba(152, 100, 230, 1) 75%);}
 .Zalo {background: linear-gradient(to right, #0068ff, #0244cf);} 
 
+/* MUSIC PLAYER STYLE */
+.MusicPlayerBox {
+    width: 90%;
+    max-width: 400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 20; 
+    margin-bottom: 20px;
+}
+.PlayerContainer {
+    background: rgba(30, 30, 30, 0.9);
+    border: 2px solid #00FFFF;
+    border-radius: 50px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0 10px #00FFFF;
+    cursor: pointer;
+    transition: 0.3s;
+    overflow: hidden;
+}
+.PlayerContainer:hover {transform: scale(1.02); box-shadow: 0 0 15px #FF00FF; border-color: #FF00FF;}
+.DiskWrapper {position: relative; width: 60px; height: 60px; flex-shrink: 0;}
+#Disk {width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid white; box-shadow: 0 0 5px white; transition: transform 0.5s linear;}
+.rotating {animation: spin 5s linear infinite;}
+@keyframes spin { 100% { transform: rotate(360deg); } }
+.PlayButtonOverlay {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 18px; text-shadow: 0 0 5px black; pointer-events: none;}
+.SongInfo {margin-left: 15px; flex-grow: 1; display: flex; flex-direction: column; justify-content: center; overflow: hidden;}
+.SongName {color: #fff; font-family: 'Teko', sans-serif; font-size: 18px; margin-bottom: 5px; text-shadow: 0 0 2px cyan;}
+
+/* SÓNG NHẠC THẬT */
+.MusicWave {display: flex; align-items: flex-end; height: 20px; gap: 4px; margin-bottom: 2px;}
+.MusicWave span {display: block; width: 6px; background: #00ff00; border-radius: 5px; height: 3px; transition: height 0.05s ease; box-shadow: 0 0 5px #00ff00;}
+.TimeDuration {font-size: 10px; color: #aaa; text-align: right; margin-right: 10px; font-family: monospace;}
+
 /* BANK BOX */
 .ThongTinThanhToan {transition: .5s; display: flex; align-items: center; justify-content: center; flex-direction: column; background-color: #252525; padding: 14px; border-radius: 10px; box-shadow: 0 2px 2px 1px #555; color: #ffffff; width: 80%; margin-left: auto; margin-right: auto; margin-top: 10px; margin-bottom: 10px; border-radius: 2px; box-shadow: 0 0 7px 3px #33FFFF; cursor: pointer; position: relative; z-index: 2;}
 .ThongTinThanhToan:hover {background-color: #353535; box-shadow: 0 2px 2px 1px #555; transform: scale(0.95); border-radius: 2px; box-shadow: 0 0 7px 3px #33FFFF;}
 
-/* QR CODE SLIDE */
-.QRCodeBox {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.5s ease-out, opacity 0.5s ease-out, margin 0.5s ease;
-    opacity: 0;
-    width: 80%;
-    margin: 0 auto;
-    background-color: #252525;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    text-align: center;
-}
-.QRCodeBox.show {
-    max-height: 600px;
-    opacity: 1;
-    margin-top: -10px;
-    margin-bottom: 20px;
-    padding-bottom: 15px;
-    border: 1px solid #00FFFF;
-    border-top: none;
-}
-.QRCodeBox img {
-    width: 100%;
-    max-width: 250px;
-    height: auto;
-    margin-top: 15px;
-    border-radius: 10px;
-    border: 2px solid white;
-    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-    object-fit: contain;
-}
+/* QR CODE SLIDE (FIXED) */
+.QRCodeBox {max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out, opacity 0.5s ease-out, margin 0.5s ease; opacity: 0; width: 80%; margin: 0 auto; background-color: #252525; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; text-align: center;}
+.QRCodeBox.show {max-height: 600px; opacity: 1; margin-top: -10px; margin-bottom: 20px; padding-bottom: 15px; border: 1px solid #00FFFF; border-top: none;}
+.QRCodeBox img {width: 100%; max-width: 250px; height: auto; margin-top: 15px; border-radius: 10px; border: 2px solid white; box-shadow: 0 0 10px rgba(0, 255, 255, 0.5); object-fit: contain;}
 
 .ThongTinThanhToanTitle {padding: 0 0; margin: 0 0; font-size: 23px; font-weight: 700; color: #00FFFF;}
 .ThongTinThanhToanText {padding: 0 0; margin: 5 0; font-size: 20px; font-weight: 500; color: #00CC33; margin-top: 5px;}
 .Blob {background: black; border-radius: 50%; margin: 10px; height: 150px; width: 150px; background: #111845a6; box-sizing: border-box; overflow: hidden; box-shadow: 0 0 10px 1px #FFFFFF; animation: blur 3s linear 1 0s forwards; animation: pulse 3s infinite;}
-
 .dichvu, .TTTT {color: #FFFFFF; padding: 0; font-size: 22px; line-height: 1.8; margin-bottom: 0; text-shadow: -1px 0 5px CYAN, 0 1px 5px RED, 1px 0 5px CYAN, 0 -1px 5px RED;}
 .TieuSu {text-align: center; color: #fff; font-size: 22px; font-weight: bold; text-shadow: -1px 0 5px CYAN, 0 1px 5px RED, 1px 0 5px CYAN, 0 -1px 5px RED;}
 hr.ThanhGachNgang {border: 0.5px solid #FFFFFF; border-style: double; margin-left: 20px; margin-right: 20px;}
@@ -85,29 +92,9 @@ hr.ThanhGachNgang {border: 0.5px solid #FFFFFF; border-style: double; margin-lef
 .Topnav a:hover {border-bottom: 3px solid #00ffff; margin-left: 2px; transition: 0.5s;}
 .Topnav a.Active {border-bottom: 3px solid #00ff00; margin-left: 5px;}
 
-/* TOAST (HIỆU ỨNG WELCOME) - ĐÃ CẬP NHẬT */
-#Toast {
-    visibility: hidden;
-    min-width: 250px;
-    margin-left: -125px;
-    background-color: #333;
-    color: gold;
-    text-align: center;
-    border-radius: 50px;
-    border: 3px solid green;
-    padding: 16px;
-    position: fixed;
-    z-index: 9999; /* Đã tăng lên mức cao nhất để luôn nổi lên trên */
-    left: 50%;
-    bottom: 35px;
-    font-size: 20px;
-}
-#Toast.show {
-    visibility: visible;
-    -webkit-animation: fadein 2.0s, fadeout 2.0s 2.0s;
-    animation: fadein 2.0s, fadeout 2.0s 2.0s;
-}
-
+/* TOAST FIX Z-INDEX */
+#Toast {visibility: hidden; min-width: 250px; margin-left: -125px; background-color: #333; color: gold; text-align: center; border-radius: 50px; border: 3px solid green; padding: 16px; position: fixed; z-index: 9999; left: 50%; bottom: 35px; font-size: 20px;}
+#Toast.show {visibility: visible; -webkit-animation: fadein 2.0s, fadeout 2.0s 2.0s; animation: fadein 2.0s, fadeout 2.0s 2.0s;}
 .NoScript {display: flex; align-items: center; justify-content: center; padding: 25px; margin: 20px; flex-direction: column; border-radius: 20px; border: 3px double cyan; background-color: #252525; color: #fff;}
 @keyframes pulse {0% {transform: scale(0.99)} 50% {transform: scale(1.1)} 100% {transform: scale(0.99)}}
 @keyframes bodyborder {20% {border-color: cyan} 40% {border-color: lime} 60% {border-color: red} 80% {border-color: yellow} 90% {border-color: orange}}
