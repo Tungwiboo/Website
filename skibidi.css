@@ -10,18 +10,18 @@
 
 /* Giao diện nút bấm */
 .outline li {
-    display: block; /* Xếp dọc */
-    width: 90%; /* TRÊN ĐIỆN THOẠI: Chiếm 90% màn hình để không bị tràn */
-    max-width: 350px; /* TRÊN MÁY TÍNH: Giới hạn tối đa 350px */
+    display: block; /* Xếp dọc trên điện thoại */
+    width: 90%; /* Chiếm 90% màn hình để không bị tràn */
+    max-width: 350px; /* Giới hạn tối đa trên máy tính */
     margin: 15px auto; /* Tự động căn giữa */
     padding: 15px;
     
-    /* Màu sắc và viền */
+    /* --- ĐÃ SỬA Ở ĐÂY: VIỀN NEON LUÔN SÁNG --- */
     background-color: #e0e0e0;
     color: #636363;
-    border: 3px solid rgba(105, 105, 105, 0.644);
+    border: 3px solid #00FFFF; /* Đổi màu viền thành Neon Cyan */
     border-radius: 20px;
-    box-shadow: 0 0 10px 0px #33FFFF;
+    box-shadow: 0 0 15px 0px #00FFFF; /* Tăng độ sáng của bóng neon */
     
     font-size: 17px;
     font-weight: bold;
@@ -33,12 +33,11 @@
     z-index: 20;
 }
 
-/* Hiệu ứng khi di chuột hoặc bấm vào */
+/* Hiệu ứng khi di chuột hoặc bấm vào (Tăng sáng thêm) */
 .outline li:hover, .outline li:active {
-    transform: scale(0.96); /* Thu nhỏ nhẹ tạo cảm giác bấm */
-    box-shadow: 0 0 15px 5px #00FFFF;
+    transform: scale(0.97); /* Thu nhỏ nhẹ tạo cảm giác bấm */
     background-color: #ffffff;
-    border-color: #00FFFF;
+    box-shadow: 0 0 25px 5px #00FFFF; /* Bóng sáng rực hơn khi bấm */
 }
 
 html {
