@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <link rel="shortcut icon" href="https://i.imgur.com/R4YNDY5.jpg" type="image/x-icon">
     <title>NBTUNG | HOME</title>
-    <link rel="stylesheet" href="skibidi.css" />
+    <link rel="stylesheet" href="_thanhdieu.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <link rel="stylesheet" href="index.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
@@ -18,6 +18,7 @@
 <body class="Border" onLoad="onCreate()">
     <div class="BlurWebs">
         <div class="Topnav">
+            <a class="Active">HOME</a>
             <a style="color:red;">
                 <span id="fps">60.0</span> FPS
             </a>
@@ -38,29 +39,28 @@
         <div class="MusicPlayerBox">
             <div class="PlayerContainer" onclick="ToggleMusic()">
                 <div class="DiskWrapper">
-                    <img id="Disk" src="https://sf-static.upanhlaylink.com/img/image_202601134a85a0fd26ca919c182d16269ed6231f.jpg"> <div class="PlayButtonOverlay">
+                    <img id="Disk" src="https://i.imgur.com/R4YNDY5.jpg">
+                    <div class="PlayButtonOverlay">
                         <i id="PlayIcon" class="fas fa-play"></i>
                     </div>
                 </div>
                 
                 <div class="SongInfo">
-                    <marquee scrollamount="5" class="SongName">Nhột Làc</marquee>
+                    <marquee scrollamount="5" class="SongName">Tên Bài Hát - Ca Sĩ Trình Bày</marquee>
                     
                     <div class="MusicWave" id="RealWave">
-                        <span id="bar1"></span>
-                        <span id="bar2"></span>
-                        <span id="bar3"></span>
-                        <span id="bar4"></span>
-                        <span id="bar5"></span>
-                    </div>
-
-                    <div class="TimeDuration">
-                        <span id="CurrentTime">00:00</span> / <span id="TotalDuration">30:25</span>
+                        <span id="bar1"></span><span id="bar2"></span><span id="bar3"></span><span id="bar4"></span><span id="bar5"></span>
                     </div>
                 </div>
+
+                <div class="TimeDuration">
+                    <span id="CurrentTime">00:00</span> / <span id="TotalDuration">00:00</span>
+                </div>
             </div>
+            
             <audio id="AudioPlayer" crossorigin="anonymous" src="https://files.catbox.moe/8mk5ke.mp3" loop></audio>
         </div>
+        
         <br><hr class="New"><br>
         
         <h2 class="dichvu">Contact Social</h2>
@@ -115,28 +115,23 @@
             <br><br>
 
             <div class="dichvu">
-                <h2> Hệ Sinh Thái </h2>
+                <h2><i class="fas fa-code"></i> Skill Languages </h2>
                 <br>
             </div>
             <ul class="outline">
-                <li class="transform" onclick="window.open('https://nbtung.shop/', '_blank')">
+             <li class="transform" onclick="window.open('https://nbtung.shop/', '_blank')">
                     Shop Acc Game Giá Rẻ
                 </li>
-
                 <li class="transform" onclick="window.open('https://www.tiktok.com/@nbtung.official/', '_blank')">
                     TikTok
                 </li>
-                
                 <br>
-                
                 <li class="transform" onclick="window.open('https://youtube.com/@tungwiboo/', '_blank')">
                     Youtube
                 </li>
-
                 <li class="transform" onclick="window.open('https://donate.nbtung.shop/', '_blank')">
                     DONATE CHO TÔI
                 </li>
-                
                 <br>
             </ul>
             <br>
