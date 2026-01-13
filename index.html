@@ -34,6 +34,34 @@
             XIN CHÀO MỌI NGƯỜI.<br>ĐÂY LÀ BIO CỦA MÌNH
         </h2>
         <br><hr class="New"><br>
+
+        <div class="MusicPlayerBox">
+            <div class="PlayerContainer" onclick="ToggleMusic()">
+                <div class="DiskWrapper">
+                    <img id="Disk" src="https://i.imgur.com/R4YNDY5.jpg"> <div class="PlayButtonOverlay">
+                        <i id="PlayIcon" class="fas fa-play"></i>
+                    </div>
+                </div>
+                
+                <div class="SongInfo">
+                    <marquee scrollamount="5" class="SongName">Tên Bài Hát - Ca Sĩ Trình Bày</marquee>
+                    
+                    <div class="MusicWave" id="RealWave">
+                        <span id="bar1"></span>
+                        <span id="bar2"></span>
+                        <span id="bar3"></span>
+                        <span id="bar4"></span>
+                        <span id="bar5"></span>
+                    </div>
+
+                    <div class="TimeDuration">
+                        <span id="CurrentTime">00:00</span> / <span id="TotalDuration">00:00</span>
+                    </div>
+                </div>
+            </div>
+            <audio id="AudioPlayer" crossorigin="anonymous" src="https://files.catbox.moe/58066f.mp3" loop></audio>
+        </div>
+        <br><hr class="New"><br>
         
         <h2 class="dichvu">Contact Social</h2>
         <ul class="icons">
