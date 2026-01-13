@@ -32,46 +32,74 @@ body {position: relative; scroll-behaviour: smooth; font-family: ZCOOL QingKe Hu
 .Discord {background: linear-gradient(139deg, rgba(88, 101, 242, 1) 41%, rgba(152, 100, 230, 1) 75%);}
 .Zalo {background: linear-gradient(to right, #0068ff, #0244cf);} 
 
-/* MUSIC PLAYER STYLE */
+/* ===== MUSIC PLAYER STYLE (CAPSULE/VIÊN THUỐC) ===== */
 .MusicPlayerBox {
-    width: 90%;
-    max-width: 400px;
+    width: 95%;
+    max-width: 450px;
     margin: 0 auto;
     position: relative;
     z-index: 20; 
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 .PlayerContainer {
-    background: rgba(30, 30, 30, 0.9);
+    background: rgba(20, 20, 20, 0.9);
     border: 2px solid #00FFFF;
-    border-radius: 50px;
-    padding: 10px;
+    border-radius: 60px; /* Bo tròn 2 đầu */
+    padding: 5px;
+    height: 70px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     box-shadow: 0 0 10px #00FFFF;
     cursor: pointer;
     transition: 0.3s;
     overflow: hidden;
 }
-.PlayerContainer:hover {transform: scale(1.02); box-shadow: 0 0 15px #FF00FF; border-color: #FF00FF;}
-.DiskWrapper {position: relative; width: 60px; height: 60px; flex-shrink: 0;}
-#Disk {width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid white; box-shadow: 0 0 5px white; transition: transform 0.5s linear;}
-.rotating {animation: spin 5s linear infinite;}
-@keyframes spin { 100% { transform: rotate(360deg); } }
-.PlayButtonOverlay {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 18px; text-shadow: 0 0 5px black; pointer-events: none;}
-.SongInfo {margin-left: 15px; flex-grow: 1; display: flex; flex-direction: column; justify-content: center; overflow: hidden;}
-.SongName {color: #fff; font-family: 'Teko', sans-serif; font-size: 18px; margin-bottom: 5px; text-shadow: 0 0 2px cyan;}
+.PlayerContainer:hover {transform: scale(1.02); box-shadow: 0 0 20px #FF00FF; border-color: #FF00FF;}
 
-/* SÓNG NHẠC THẬT */
-.MusicWave {display: flex; align-items: flex-end; height: 20px; gap: 4px; margin-bottom: 2px;}
-.MusicWave span {display: block; width: 6px; background: #00ff00; border-radius: 5px; height: 3px; transition: height 0.05s ease; box-shadow: 0 0 5px #00ff00;}
-.TimeDuration {font-size: 10px; color: #aaa; text-align: right; margin-right: 10px; font-family: monospace;}
+.DiskWrapper {
+    position: relative;
+    width: 55px; height: 55px; /* Kích thước ảnh cố định */
+    margin-left: 2px;
+    flex-shrink: 0;
+}
+#Disk {
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid white;
+    box-shadow: 0 0 5px white;
+    transition: transform 0.5s linear;
+}
+.PlayButtonOverlay {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 10;
+}
+#PlayIcon {
+    color: white; font-size: 20px; text-shadow: 0 0 5px black;
+    background: rgba(0,0,0,0.5);
+    width: 30px; height: 30px; line-height: 30px; text-align: center; border-radius: 50%;
+}
+.SongInfo {flex-grow: 1; display: flex; flex-direction: column; justify-content: center; margin-left: 12px; margin-right: 12px; overflow: hidden;}
+.SongName {color: #fff; font-family: 'Teko', sans-serif; font-size: 18px; margin-bottom: 3px; text-shadow: 0 0 2px cyan; width: 100%;}
+.MusicWave {display: flex; align-items: flex-end; height: 15px; gap: 3px;}
+.MusicWave span {display: block; width: 5px; background: #00ff00; border-radius: 5px; height: 3px; transition: height 0.05s ease; box-shadow: 0 0 5px #00ff00;}
+.TimeDuration {
+    font-size: 12px; color: #00FFFF; font-weight: bold; font-family: monospace;
+    margin-right: 15px; white-space: nowrap;
+    background: rgba(0,0,0,0.5); padding: 3px 8px; border-radius: 10px; border: 1px solid #555;
+}
+.rotating { animation: spin 5s linear infinite; }
+@keyframes spin { 100% { transform: rotate(360deg); } }
 
 /* BANK BOX */
 .ThongTinThanhToan {transition: .5s; display: flex; align-items: center; justify-content: center; flex-direction: column; background-color: #252525; padding: 14px; border-radius: 10px; box-shadow: 0 2px 2px 1px #555; color: #ffffff; width: 80%; margin-left: auto; margin-right: auto; margin-top: 10px; margin-bottom: 10px; border-radius: 2px; box-shadow: 0 0 7px 3px #33FFFF; cursor: pointer; position: relative; z-index: 2;}
 .ThongTinThanhToan:hover {background-color: #353535; box-shadow: 0 2px 2px 1px #555; transform: scale(0.95); border-radius: 2px; box-shadow: 0 0 7px 3px #33FFFF;}
 
-/* QR CODE SLIDE (FIXED) */
+/* QR CODE SLIDE */
 .QRCodeBox {max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out, opacity 0.5s ease-out, margin 0.5s ease; opacity: 0; width: 80%; margin: 0 auto; background-color: #252525; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; text-align: center;}
 .QRCodeBox.show {max-height: 600px; opacity: 1; margin-top: -10px; margin-bottom: 20px; padding-bottom: 15px; border: 1px solid #00FFFF; border-top: none;}
 .QRCodeBox img {width: 100%; max-width: 250px; height: auto; margin-top: 15px; border-radius: 10px; border: 2px solid white; box-shadow: 0 0 10px rgba(0, 255, 255, 0.5); object-fit: contain;}
