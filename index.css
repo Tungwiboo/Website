@@ -1,90 +1,158 @@
+/* --- index.css --- */
+
 @import url('https://fonts.googleapis.com/css2?family=ZCOOL+QingKe+HuangYou&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Teko:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 
-* {box-sizing: border-box; margin: 0; padding: 0; border-radius: 0px; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;}
-body {position: relative; scroll-behaviour: smooth; font-family: ZCOOL QingKe HuangYou; background: black;}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent; /* Bỏ màu xanh khi tap trên mobile */
+}
 
-.Border {font-size: 12px; position: relative; min-height: 100%; box-sizing: border-box; padding-bottom: 80px; text-align: center; background-color: BLACK; padding: 0px; margin: 8px; border-style: double; border-radius: 10px; border-color: #ccc; border-width: 2px; animation-name: bodyborder; animation-iteration-count: infinite; animation-duration: 5s; animation-direction: right;}
-.BlurWebs {animation: blur 3s linear 1 0s forwards;}
+body {
+    position: relative;
+    scroll-behavior: smooth;
+    font-family: 'ZCOOL QingKe HuangYou', sans-serif;
+    background: black;
+    color: white;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
 
-.BlurWebs {
+/* --- CẤU HÌNH KHUNG VIỀN CHÍNH (BORDER) --- */
+.Border {
+    position: relative;
+    min-height: 100vh; /* Luôn cao bằng ít nhất màn hình */
+    box-sizing: border-box;
+    padding-bottom: 80px;
+    text-align: center;
+    background-color: black;
+    
+    /* Mặc định trên PC có viền */
+    padding: 10px;
+    margin: 10px;
+    border-style: double;
+    border-radius: 15px;
+    border-color: #ccc;
+    border-width: 4px;
+    animation: bodyborder 5s infinite linear;
+}
+
+/* --- HIỆU ỨNG ẨN/HIỆN QR CODE (TOGGLE) --- */
+.QRCodeBox {
+    /* Trạng thái ẨN */
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    
+    /* Chuyển động trượt mượt mà 0.5 giây */
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    width: 90%;
+    margin: 0 auto; /* Căn giữa */
+    text-align: center;
+}
+
+.QRCodeBox.show {
+    /* Trạng thái HIỆN */
+    max-height: 600px; /* Đủ lớn để hiện ảnh */
     opacity: 1;
-    filter: blur(0px);
+    
+    margin-top: 15px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #00FFFF;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+}
+
+.QRCodeBox img {
+    width: 100%;
+    max-width: 250px; /* Giới hạn độ to ảnh */
+    height: auto;
+    border-radius: 10px;
+    border: 2px solid white;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    object-fit: contain;
+}
+
+/* --- CÁC THÀNH PHẦN KHÁC --- */
+.BlurWebs {
+    animation: blur 1.5s ease-out 1 forwards;
+    opacity: 0;
+    filter: blur(10px);
     position: relative;
     z-index: 10;
 }
 
-::-webkit-scrollbar {width: 8px; height: 15px;}
-::-webkit-scrollbar-track {box-shadow: inset 0 0 5px grey; border-radius: 10px;}
-@@ -43,25 +49,23 @@
-    text-align: center;
-}
-.QRCodeBox.show {
-    max-height: 600px; /* Tăng chiều cao lên để chứa đủ ảnh dài */
-    max-height: 600px;
-    opacity: 1;
-    margin-top: -10px;
-    margin-bottom: 20px;
-    padding-bottom: 15px;
-    border: 1px solid #00FFFF;
-    border-top: none;
-}
+@keyframes blur { to { opacity: 1; filter: blur(0px); } }
 
-/* ĐÃ SỬA Ở ĐÂY: Hiển thị trọn vẹn ảnh QR */
-.QRCodeBox img {
-    width: 100%;       /* Chiếm hết chiều rộng của hộp chứa */
-    max-width: 250px;  /* Giới hạn chiều rộng tối đa */
-    height: auto;      /* Chiều cao tự động theo tỉ lệ ảnh -> Không bị cắt */
-    width: 100%;
-    max-width: 250px;
-    height: auto;
-    margin-top: 15px;
-    border-radius: 10px;
-    border: 2px solid white;
-    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-    object-fit: contain; /* Đảm bảo ảnh nằm trọn trong khung */
-    object-fit: contain;
+/* Thanh cuộn đẹp hơn */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #000; }
+::-webkit-scrollbar-thumb { background: #00FFFF; border-radius: 10px; }
+
+/* Text Styles */
+.ThongTinThanhToanTitle { padding: 5px 0; font-size: 22px; font-weight: 700; color: #00FFFF; text-shadow: 0 0 5px #00FFFF; }
+.ThongTinThanhToanText { font-size: 18px; color: white; margin-bottom: 5px; word-break: break-word; }
+.dichvu { font-size: 25px; color: #00FFFF; margin: 20px 0; text-shadow: 0 0 10px #00FFFF; }
+.TieuSu { font-size: 18px; line-height: 1.5; color: #ddd; margin-top: 10px; }
+
+/* Các thành phần trang trí */
+.New { width: 50%; margin: 0 auto; border-color: #00FFFF; box-shadow: 0 0 10px cyan; }
+.ThanhGachNgang { width: 80%; margin: 20px auto; border: 1px dashed #555; }
+.Blob { border-radius: 50%; border: 3px solid #00FFFF; box-shadow: 0 0 20px #00FFFF; animation: pulse 2s infinite; }
+
+/* Social Links */
+.lienhe a { text-decoration: none; display: inline-block; margin: 5px; width: 80%; max-width: 300px;}
+.Facebook, .Discord, .Zalo {
+    padding: 10px; border-radius: 50px; font-weight: bold; color: white;
+    transition: transform 0.2s;
 }
+.Facebook { background: #1877F2; border: 2px solid #1877F2; }
+.Discord { background: #5865F2; border: 2px solid #5865F2; }
+.Zalo { background: #0068FF; border: 2px solid #0068FF; }
 
-.ThongTinThanhToanTitle {padding: 0 0; margin: 0 0; font-size: 23px; font-weight: 700; color: #00FFFF;}
-@@ -77,4 +81,39 @@
-.rainbow {margin-top: 15px; text-align: center; font-size: 16px; color: #aaa; margin-bottom: 0; animation: colorRotate 2.5s linear 0s infinite;}
-@keyframes colorRotate {from {color: #FFFFFF} 10% {color: #FF0000} 30% {color: #00FF00} 45% {color: #0000FF} 55% {color: #FFFF00} 65% {color: #00FFFF} 75% {color: #00FF00} 85% {color: #0000FF} 100% {color: #FF66CC}}
-.Topnav {overflow: hidden;}
-.Topnav a {font-family: 'ZCOOL QingKe HuangYou'; float: left; display: block; color: pink; text-align: center;
-.Topnav a {font-family: 'ZCOOL QingKe HuangYou'; float: left; display: block; color: pink; text-align: center; padding: 12px 14px; text-decoration: none; font-size: 17px; border-bottom: 3px solid transparent;}
-.Topnav a:hover {border-bottom: 3px solid #00ffff; margin-left: 2px; transition: 0.5s;}
-.Topnav a.Active {border-bottom: 3px solid #00ff00; margin-left: 5px;}
+.rainbow { animation: colorRotate 3s linear infinite; }
+@keyframes colorRotate { 0% { color: #FF0000; } 50% { color: #00FFFF; } 100% { color: #FF0000; } }
 
-/* TOAST (HIỆU ỨNG WELCOME) - ĐÃ CẬP NHẬT */
+/* Toast & FPS */
+.Topnav { display: flex; justify-content: center; padding-top: 10px; }
 #Toast {
-    visibility: hidden;
-    min-width: 250px;
-    margin-left: -125px;
-    background-color: #333;
-    color: gold;
-    text-align: center;
-    border-radius: 50px;
-    border: 3px solid green;
-    padding: 16px;
-    position: fixed;
-    z-index: 9999; /* Đã tăng lên mức cao nhất để luôn nổi lên trên */
-    left: 50%;
-    bottom: 35px;
-    font-size: 20px;
+    visibility: hidden; min-width: 250px; background-color: rgba(51, 51, 51, 0.95);
+    color: #00FFFF; text-align: center; border-radius: 50px; border: 2px solid #00FFFF;
+    padding: 16px; position: fixed; z-index: 9999;
+    left: 50%; bottom: 30px; transform: translateX(-50%);
+    font-size: 18px; box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
 }
-#Toast.show {
-    visibility: visible;
-    -webkit-animation: fadein 2.0s, fadeout 2.0s 2.0s;
-    animation: fadein 2.0s, fadeout 2.0s 2.0s;
-}
+#Toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
 
-.NoScript {display: flex; align-items: center; justify-content: center; padding: 25px; margin: 20px; flex-direction: column; border-radius: 20px; border: 3px double cyan; background-color: #252525; color: #fff;}
-@keyframes pulse {0% {transform: scale(0.99)} 50% {transform: scale(1.1)} 100% {transform: scale(0.99)}}
-@keyframes bodyborder {20% {border-color: cyan} 40% {border-color: lime} 60% {border-color: red} 80% {border-color: yellow} 90% {border-color: orange}}
-@keyframes shimmer {100% {-webkit-mask-position: left}}
-@-webkit-keyframes fadein {from {bottom: 0; opacity: 0} to {bottom: 35px; opacity: 1}}
-@keyframes fadein {from {bottom: 0; opacity: 0} to {bottom: 35px; opacity: 1}}
-@-webkit-keyframes fadeout {from {bottom: 35px; opacity: 1} to {bottom: 0; opacity: 0}}
-@keyframes fadeout {from {bottom: 35px; opacity: 1} to {bottom: 0; opacity: 0}}
+@keyframes pulse { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 255, 0.7); } 70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(0, 255, 255, 0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 255, 0); } }
+@keyframes bodyborder { 0% { border-color: cyan; } 50% { border-color: magenta; } 100% { border-color: cyan; } }
+@keyframes fadein { from { bottom: 0; opacity: 0; } to { bottom: 30px; opacity: 1; } }
+@keyframes fadeout { from { bottom: 30px; opacity: 1; } to { bottom: 0; opacity: 0; } }
+
+/* ========================================= */
+/* QUAN TRỌNG: FIX LỖI ĐIỆN THOẠI (MOBILE) */
+/* ========================================= */
+@media only screen and (max-width: 768px) {
+    .Border {
+        margin: 0 !important;       /* Xóa margin gây đen viền */
+        border: none !important;    /* Xóa viền dày gây tốn diện tích */
+        border-radius: 0 !important;
+        width: 100% !important;
+        padding: 15px 5px !important;
+        min-height: 100vh;          /* Full màn hình */
+        animation: none !important; /* Tắt nhấp nháy viền trên đt */
+    }
+
+    .QRCodeBox.show {
+        width: 95%; /* QR to hơn chút trên điện thoại */
+    }
+
+    .ThongTinThanhToanTitle {
+        font-size: 20px; 
+    }
+}
