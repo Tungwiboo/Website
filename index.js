@@ -48,8 +48,8 @@ function Discord() {
     window.open('https://discord.gg/s5vagyAy8', '_blank');
 }
 
-function Telegram() {
-    window.open('https://t.me/ThanhDieuChannel', '_blank');
+function Zalo() {
+    window.open('https://zalo.me/0364914860/', '_blank');
 }
 
 function DarkMode() {
