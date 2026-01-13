@@ -45,7 +45,6 @@ function ToggleQR(id) {
         if (qrBox.classList.contains("show")) {
             qrBox.classList.remove("show");
         } else {
-            // CloseAllQR();
             qrBox.classList.add("show");
         }
     }
@@ -58,7 +57,7 @@ function CloseAllQR() {
 }
 
 //▬▬▬▬▬▬▬▬▬▬
-// MUSIC PLAYER & REAL VISUALIZER
+// MUSIC PLAYER
 //▬▬▬▬▬▬▬▬▬▬
 var audio = document.getElementById("AudioPlayer");
 var disk = document.getElementById("Disk");
@@ -77,9 +76,11 @@ function initAudioContext() {
     if (!audioInitialized) {
         context = new (window.AudioContext || window.webkitAudioContext)();
         analyser = context.createAnalyser();
-        src = context.createMediaElementSource(audio);
-        src.connect(analyser);
-        analyser.connect(context.destination);
+        try {
+            src = context.createMediaElementSource(audio);
+            src.connect(analyser);
+            analyser.connect(context.destination);
+        } catch (e) { console.log("Audio source connected"); }
         analyser.fftSize = 256;
         array = new Uint8Array(analyser.frequencyBinCount);
         audioInitialized = true;
@@ -106,15 +107,15 @@ function renderVisualizer() {
 }
 
 function ToggleMusic() {
-    if (!audioInitialized) {
-        initAudioContext();
-        if (context.state === 'suspended') { context.resume(); }
-    }
+    if (!audioInitialized) { initAudioContext(); }
+    if (context && context.state === 'suspended') { context.resume(); }
+
     if (audio.paused) {
-        audio.play();
-        playIcon.className = "fas fa-pause";
-        disk.classList.add("rotating");
-        renderVisualizer();
+        audio.play().then(() => {
+            playIcon.className = "fas fa-pause";
+            disk.classList.add("rotating");
+            renderVisualizer();
+        });
     } else {
         audio.pause();
         playIcon.className = "fas fa-play";
@@ -133,7 +134,7 @@ function formatTime(time) {
     return (min < 10 ? "0" + min : min) + ":" + (sec < 10 ? "0" + sec : sec);
 }
 
-// Auto-play & Sakura Start
+// Sakura & Init
 var stop, staticx;
 var img = new Image();
 img.src = "https://i.imgur.com/R9XUjfF.png";
@@ -215,21 +216,4 @@ function startSakura() {
     animateSakura();
 }
 window.onresize = function() { var canvasSnow = document.getElementById('canvas_sakura'); if(canvasSnow) { canvasSnow.width = window.innerWidth; canvasSnow.height = window.innerHeight; } }
-
 img.onload = function() { startSakura(); }
-
-window.addEventListener('load', function() {
-    var promise = audio.play();
-    if (promise !== undefined) {
-        promise.then(_ => {
-            disk.classList.add("rotating");
-            playIcon.className = "fas fa-pause";
-        }).catch(error => { console.log("Auto-play blocked."); });
-    }
-    document.body.addEventListener('click', function() {
-        if (!audioInitialized) {
-            initAudioContext();
-            if (context.state === 'suspended') { context.resume(); }
-        }
-    }, { once: true });
-});
