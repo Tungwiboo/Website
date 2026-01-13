@@ -1,19 +1,47 @@
-/* CLASS MỚI: .outline */
-.outline li {
-    display: inline-block;
-    width: 350px;
-    margin: 20px;
-    margin-top: 0.5em;
-    padding: 15px;
-    min-width: 3em;
+/* --- skibidi.css --- */
+
+/* Reset cơ bản cho danh sách nút */
+.outline {
+    list-style: none;
+    padding: 0;
+    margin: 0;
     text-align: center;
+}
+
+/* Giao diện nút bấm */
+.outline li {
+    display: block; /* Xếp dọc */
+    width: 90%; /* TRÊN ĐIỆN THOẠI: Chiếm 90% màn hình để không bị tràn */
+    max-width: 350px; /* TRÊN MÁY TÍNH: Giới hạn tối đa 350px */
+    margin: 15px auto; /* Tự động căn giữa */
+    padding: 15px;
+    
+    /* Màu sắc và viền */
     background-color: #e0e0e0;
     color: #636363;
     border: 3px solid rgba(105, 105, 105, 0.644);
     border-radius: 20px;
     box-shadow: 0 0 10px 0px #33FFFF;
+    
     font-size: 17px;
-    cursor: pointer; 
+    font-weight: bold;
+    cursor: pointer;
+    
+    /* Hiệu ứng chuyển động mượt */
+    transition: all 0.3s ease; 
+    position: relative;
+    z-index: 20;
 }
-.transform:hover {transform: scale(0.95); box-shadow: 0 0 7px 3px #00FFFF;}
-html {position: relative;}
+
+/* Hiệu ứng khi di chuột hoặc bấm vào */
+.outline li:hover, .outline li:active {
+    transform: scale(0.96); /* Thu nhỏ nhẹ tạo cảm giác bấm */
+    box-shadow: 0 0 15px 5px #00FFFF;
+    background-color: #ffffff;
+    border-color: #00FFFF;
+}
+
+html {
+    position: relative;
+    overflow-x: hidden; /* Chặn thanh cuộn ngang tuyệt đối */
+}
