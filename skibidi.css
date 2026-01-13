@@ -15,8 +15,5 @@
     font-size: 17px;
     cursor: pointer; 
 }
-/* CLASS MỚI: .transform */
 .transform:hover {transform: scale(0.95); box-shadow: 0 0 7px 3px #00FFFF;}
-
-/* Đã tắt hiệu ứng tuyết rơi để hiển thị hoa anh đào */
 html {position: relative;}
